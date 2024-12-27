@@ -20,7 +20,7 @@ namespace MelonSRML.Console.Commands
                 return false;
             }
 
-            GadgetDefinition id = Resources.FindObjectsOfTypeAll<GadgetDefinition>().FirstOrDefault(x => x.ValidatableName.Equals(args[0]));
+            GadgetDefinition id = Resources.FindObjectsOfTypeAll<GadgetDefinition>().FirstOrDefault(x => x.name.Equals(args[0]));
             if (id == null)
                 throw new ArgumentException("This ID is incorrect");
             int count = 0;
@@ -41,7 +41,7 @@ namespace MelonSRML.Console.Commands
             if (argIndex == 0)
             {
                 var identifiableTypeGroup =
-                    Resources.FindObjectsOfTypeAll<GadgetDefinition>().Select(x => x.ValidatableName);
+                    Resources.FindObjectsOfTypeAll<GadgetDefinition>().Select(x => x.name);
                 return identifiableTypeGroup.ToList();
             }
 

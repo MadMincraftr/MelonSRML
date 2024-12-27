@@ -106,7 +106,7 @@ namespace MelonSRML.SR2
                 pediaCategory._items = pediaCategory._items.AddItem(pediaEntry).ToArray();
 
             LookupDirector director = SRSingleton<GameContext>.Instance.LookupDirector;
-            if (!director._categories[director._categories.IndexOf(pediaCategory.GetRuntimeCategory())].Contains(pediaEntry))
+            if (!director._categories._items[director._categories.IndexOf(pediaCategory.GetRuntimeCategory())].Contains(pediaEntry))
                 director.AddPediaEntryToCategory(pediaEntry, pediaCategory);
         }
 
@@ -129,7 +129,7 @@ namespace MelonSRML.SR2
 
             List<PediaEntryDetail> entryDetails = pediaEntry._details?.ToList();
             if (entryDetails.IsNull())
-                entryDetails = [];
+                entryDetails = new List<PediaEntryDetail>(); // Porting to 0.6: Someone added `= []` but according to Rider it is only in C# 12 or greater
 
             entryDetails.Add(new()
             {
@@ -233,7 +233,7 @@ namespace MelonSRML.SR2
             var identifiablePediaEntry = ScriptableObjectUtils.CreateScriptable<IdentifiablePediaEntry>();
             SetPediaTemplate(identifiablePediaEntry, moddedPediaEntry.TemplateId);
             SetPediaCategory(identifiablePediaEntry, moddedPediaEntry.CategoryId);
-            identifiablePediaEntry.name = identifiableType.ValidatableName;
+            identifiablePediaEntry.name = identifiableType.name;
             identifiablePediaEntry.identifiableType = identifiableType;
             identifiablePediaEntry.title = moddedPediaEntry.Title;
             identifiablePediaEntry.description = moddedPediaEntry.Description;

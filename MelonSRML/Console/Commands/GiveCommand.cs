@@ -22,7 +22,7 @@ namespace MelonSRML.Console.Commands
                 return false;
             }
 
-            IdentifiableType id = SRLookup.IdentifiableTypes.FirstOrDefault(x => x.ValidatableName.Equals(args[0]));
+            IdentifiableType id = SRLookup.IdentifiableTypes.FirstOrDefault(x => x.name.Equals(args[0])); // On the transition from 0.5 to 0.6 it appears name was removed.
             if (id == null)
                 throw new ArgumentException("This ID is incorrect");
             int count = 0;
@@ -41,7 +41,7 @@ namespace MelonSRML.Console.Commands
             if(argIndex == 0)
             {
                 var identifiableTypeGroup = Resources.FindObjectsOfTypeAll<IdentifiableTypeGroup>().FirstOrDefault(x => x.name.Equals("VaccableNonLiquids"));
-                return identifiableTypeGroup == null ? new List<string>() : identifiableTypeGroup.GetAllMembers().ToArray().Select(x => x.ValidatableName).ToList();
+                return identifiableTypeGroup == null ? new List<string>() : identifiableTypeGroup.GetAllMembers().ToArray().Select(x => x.name).ToList();
             }
             return base.GetAutoComplete(argIndex, argText);
         }

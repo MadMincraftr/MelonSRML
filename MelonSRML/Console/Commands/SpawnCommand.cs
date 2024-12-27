@@ -24,7 +24,7 @@ namespace MelonSRML.Console.Commands
             GameObject prefab;
             try
             {
-                var id = SRLookup.IdentifiableTypes.FirstOrDefault(x => x.ValidatableName.Equals(args[0]));
+                var id = SRLookup.IdentifiableTypes.FirstOrDefault(x => x.name.Equals(args[0]));
                 prefab = id.prefab;
             }
             catch
@@ -57,7 +57,7 @@ namespace MelonSRML.Console.Commands
             
             if(argIndex == 0)
             {
-                return Resources.FindObjectsOfTypeAll<IdentifiableTypeGroup>().FirstOrDefault(x => x.name.Equals("VaccableNonLiquids"))?.GetAllMembers().ToArray().Select(x => x.ValidatableName).ToList();
+                return Resources.FindObjectsOfTypeAll<IdentifiableTypeGroup>().FirstOrDefault(x => x.name.Equals("VaccableNonLiquids"))?.GetAllMembers().ToArray().Select(x => x.name).ToList();
             }
             return base.GetAutoComplete(argIndex, argText);
         }

@@ -23,6 +23,7 @@ namespace MelonSRML.Utils.Extensions
 
         public static GameObject GetPrefab(this SlimeDefinition def) => def.prefab;
 
+        // Food groups changed in 0.6
         public static SlimeDiet LoadLargoDiet(this SlimeDefinition def)
         {
             if (!def.IsLargo || def.BaseSlimes.Length == 0) return null;
@@ -30,7 +31,6 @@ namespace MelonSRML.Utils.Extensions
 
             diet.AdditionalFoodIdents = new IdentifiableType[0];
             diet.FavoriteIdents = new IdentifiableType[0];
-            diet.MajorFoodGroups = new SlimeEat.FoodGroup[0];
             diet.MajorFoodIdentifiableTypeGroups = new IdentifiableTypeGroup[0];
             diet.ProduceIdents = new IdentifiableType[0];
 
@@ -39,7 +39,6 @@ namespace MelonSRML.Utils.Extensions
                 SlimeDiet baseDiet = baseDef.Diet;
                 if (baseDiet.AdditionalFoodIdents != null) diet.AdditionalFoodIdents = diet.AdditionalFoodIdents.Union(baseDiet.AdditionalFoodIdents).ToArray();
                 if (baseDiet.FavoriteIdents != null) diet.FavoriteIdents = diet.FavoriteIdents.Union(baseDiet.FavoriteIdents).ToArray();
-                if (baseDiet.MajorFoodGroups != null) diet.MajorFoodGroups = diet.MajorFoodGroups.Union(baseDiet.MajorFoodGroups).ToArray();
                 if (baseDiet.MajorFoodIdentifiableTypeGroups != null) diet.MajorFoodIdentifiableTypeGroups = diet.MajorFoodIdentifiableTypeGroups.Union(baseDiet.MajorFoodIdentifiableTypeGroups).ToArray();
                 if (baseDiet.ProduceIdents != null) diet.ProduceIdents = diet.ProduceIdents.Concat(baseDiet.ProduceIdents).ToArray();
             }

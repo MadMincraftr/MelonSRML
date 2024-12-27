@@ -34,6 +34,9 @@
     <Reference Include="Unity.Localization">
       <HintPath>Dependencies\Unity.Localization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Dependencies\Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>Dependencies\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>

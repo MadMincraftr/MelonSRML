@@ -6,11 +6,14 @@ using UnityEngine.Localization;
 
 namespace MelonSRML.SR2
 {
-    public static class FoodGroupRegistry
+    // Food groups are now gone in 0.6, they now are just IdentifiableTypeGroups. This is great!
+    
+    
+    /*public static class FoodGroupRegistry
     {
         internal static Dictionary<SlimeEat.FoodGroup, List<IdentifiableType>> addedFoodGroups = new();
 
-        public static (IdentifiableTypeGroup, LocalizedString) AddNewFoodGroup(SlimeEat.FoodGroup foodGroup, string localized, Sprite icon, params IdentifiableType[] identifiableTypes)
+        public static (IdentifiableTypeGroup, LocalizedString) AddNewFoodGroup(FoodGroup foodGroup, string localized, Sprite icon, params IdentifiableType[] identifiableTypes)
         {
             if (MSRModLoader.CurrentLoadingStep != MSRModLoader.Step.OnGameContext)
             {
@@ -63,6 +66,6 @@ namespace MelonSRML.SR2
             }
         }
         
-    }
+    }*/
 }
 

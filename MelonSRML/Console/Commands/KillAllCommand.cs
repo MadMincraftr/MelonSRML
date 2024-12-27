@@ -28,7 +28,7 @@ namespace MelonSRML.Console.Commands
                 }
                 else try
                     {
-                        toKill.Add(SRLookup.IdentifiableTypes.FirstOrDefault(x => x.ValidatableName.Equals(v)));
+                        toKill.Add(SRLookup.IdentifiableTypes.FirstOrDefault(x => x.name.Equals(v)));
                         //toKill.Add((Identifiable.Id)Enum.Parse(typeof(Identifiable.Id), v, true));
                     }
                     catch
@@ -75,8 +75,8 @@ namespace MelonSRML.Console.Commands
         {
             if(argIndex == 0)
             {
-                return Resources.FindObjectsOfTypeAll<IdentifiableTypeGroup>().FirstOrDefault(x => x.name.Equals("VaccableNonLiquids"))?.GetAllMembers().ToArray().Select(x => x.ValidatableName).ToList();
-                //return IdentifiableTypes.Select(x => x.ValidatableName).ToList();
+                return Resources.FindObjectsOfTypeAll<IdentifiableTypeGroup>().FirstOrDefault(x => x.name.Equals("VaccableNonLiquids"))?.GetAllMembers().ToArray().Select(x => x.name).ToList();
+                //return IdentifiableTypes.Select(x => x.name).ToList();
             }
             return base.GetAutoComplete(argIndex, argText);        
         }
